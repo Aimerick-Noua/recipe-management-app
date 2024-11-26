@@ -1,0 +1,9 @@
+
+<div>
+    <div class="mx-auto">
+        <app-search (searchTermValue)="onSearchTermChange($event)" [count]="filteredRecipes.length"/> 
+    </div>
+    <div class=" w-full row-auto flex flex-wrap gap-2 md:gap-0 overflow-y-scroll h-[600px]">
+        <app-recipe-item *ngFor="let recipe of filteredRecipes" [recipe]="recipe"></app-recipe-item>
+    </div>
+</div>

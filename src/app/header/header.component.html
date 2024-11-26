@@ -1,0 +1,52 @@
+<header class="bg-white">
+  <nav class=" flex w-full items-center justify-between md:p-6 lg:px-8" aria-label="Global">
+    <div class="flex lg:flex-1 justify-between" style="width: 100%;">
+      <div>
+        <a href="#" class="-m-1.5 p-1.5">
+          <img class="h-16 w-auto" src="favicon.ico" alt="">
+        </a>
+      </div>
+      <div class="flex lg:hidden">
+        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+          (click)="toggleMobileMenu()">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div>
+      <nav class="hidden lg:flex lg:gap-x-12 nav-links w-full">
+        <a routerLink="/home" routerLinkActive="active" class="text-sm/6 font-semibold text-gray-900">Home</a>
+        <a routerLink="/recipes" routerLinkActive="active" class="text-sm/6 font-semibold text-gray-900">Recipes</a>
+        <a routerLink="/favorite-recipe" routerLinkActive="active"
+          class="text-sm/6 font-semibold text-gray-900">favorites</a>
+        <a routerLink="/shopping-list" routerLinkActive="active" class="text-sm/6 font-semibold text-gray-900">Shopping
+          List</a>
+        <a routerLink="/add-recipe" routerLinkActive="active" class="text-sm/6 font-semibold text-gray-900">Add
+          recipe</a>
+      </nav>
+    </div>
+    <div class="hidden lg:flex lg:flex-1 lg:justify-end space-x-4">
+      <a href="#" class="text-sm/6 font-semibold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+      <a href="#" class="text-sm/6 font-semibold text-gray-900">Register <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div [class.open]="isMenuOpen"
+    class="lg:hidden absolute z-10 h-screen w-full p-2 transition transform top-50 md:hidden"
+    style="background: rgba(0, 0, 0, 0.9);" *ngIf="isMenuOpen">
+    <nav class="space-y-4 px-6 py-4" *ngIf="isMenuOpen">
+      <a routerLink="/home" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Home</a>
+      <a routerLink="/recipes" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Recipes</a>
+      <a routerLink="/favorite-recipe" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Favorites</a>
+      <a routerLink="/shopping-list" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Shopping List</a>
+      <a routerLink="/add-recipe" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Add
+        Recipe</a>
+      <div class="space-y-2">
+        <a href="#" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Log in</a>
+        <a href="#" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Register</a>
+      </div>
+    </nav>
+  </div>
+</header>
