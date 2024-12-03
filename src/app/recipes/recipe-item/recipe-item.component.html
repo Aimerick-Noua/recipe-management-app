@@ -1,15 +1,13 @@
 <div class="m-4 hover:bg-gray-100 hover:cursor-pointer hover:shadow hover:scale-105 hover:duration-300 hover:ease-in-out hover:transform hover:z-10 hover:rotate-1 ">
-    <div class="max-w-sm rounded overflow-hidden shadow-lg  p-4">
-      <div class="px-6 pt-6 pb-4 w-full h-[250px]" style="background-image: url('{{recipe.imageUrl}}');background-size: cover;background-position: center;background-repeat: no-repeat;">
-        <!-- <img  src={{recipe.imageUrl}} alt="Sunset in the mountains" height="100px" width="200px"> -->
+    <div class="max-w-[22rem] rounded overflow-hidden shadow-lg  p-4">
+      <div class="px-6 pt-6 pb-4 w-full h-[200px]" style="background-image: url('{{recipe.imageUrl}}');background-size: cover;background-position: center;background-repeat: no-repeat;">
       </div>
         <div class="px-3 py-4">
             <div class="font-bold text-xl hover:text-sky-500 mb-2">
              <a [routerLink]="['/recipes',recipe.id]">{{recipe.name}}</a> 
             </div>
             <p class="inline-block py-1 text-sm font-semibold text-gray-500  mb-2" (click)="showShortenDescription()">{{recipe.description|shortenText:isShort}}</p>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2" *ngFor="let ingredient of recipe.ingredients?.slice(0,6)">{{ingredient}}</span>
-            ...
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2" *ngFor="let ingredient of recipe.ingredients|shortenIngredient">{{ingredient}}</span>
         </div>
         <div class="px-3 pt-4 pb-2">
           <div class="flex justify-between items-center">

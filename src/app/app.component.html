@@ -1,9 +1,50 @@
 <div class="flex flex-col min-h-screen">
 
-  <div class="p-2 max-w-7xl mx-auto ">
+  <div class=" max-w-full mx-32 ">
     <app-header />
     <div class="space-y-6">
       <router-outlet />
     </div>
   </div>
 </div>
+
+<h1 class="text-3xl font-bold text-center pt-4">Introduction to RXJS</h1>
+
+<!-- <div>
+  <label for="countries">Country:</label>
+  <select id="countries" [formControl]="countryControl">
+    <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+  </select>
+  <br><br>
+  <label for="states">State:</label>
+  <select  id="states">
+    <option *ngFor="let state of states">{{state}}</option>
+  </select>
+</div> -->
+<!-- <ng-container *ngIf="isLoading;">
+  <app-loader [isLoading]="isLoading"></app-loader>
+</ng-container>
+<div class="flex justify-center w-full p-6 h-auto">
+<div>
+
+  <div class=" bg-red-500 mb-6">
+  <label for="dropdown">Select Page</label>
+  <select name="dropdown" id="dropdown" [formControl]="pageControl" class="outline-dashed m-10 w-[200px] space-x-5 border-slate-700">
+    <option [value]="page" *ngFor="let page of pages">{{page}}</option>
+  </select>
+</div>
+ 
+  <div class="w-[100%] flex flex-wrap gap-2 justify-center" *ngIf="!isLoading;">
+    <div *ngFor="let post of posts" >
+      <div class="w-[90%] mx-auto md:w-auto h-auto p-4  bg-slate-600 text-white rounded-md">
+        <h1>{{post.tile}}</h1>
+        <p>{{post.body}}</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>
+</div>
+  
+</div> -->

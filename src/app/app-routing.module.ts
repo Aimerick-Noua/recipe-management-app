@@ -7,25 +7,25 @@ import { AddRecipeComponent } from "./recipes/add-recipe/add-recipe.component";
 import { FavoritesComponent } from "./recipes/favorites/favorites.component";
 import { RecipeDetailsComponent } from "./recipes/recipe-details/recipe-details.component";
 import { Recipes } from "./models/recipe.model";
-import { RecipeService } from "./services/recipe.service";
+import { RecipeService } from "./recipes/recipe.service";
 
 
-const routes:Routes = [
-    {path:'', redirectTo:'/home', pathMatch:'full'},
-    {path:'home', component:HomeComponent},
-    {path:'recipes', component:RecipesComponent},
-    {path:'recipes/:id', component:RecipeDetailsComponent},
-    {path:'add-recipe', component:AddRecipeComponent},
-    {path:'update-recipe/:id', component:AddRecipeComponent},
-    {path:'favorite-recipe', component:FavoritesComponent},
-    {path:'shopping-list', component:ShoppingListComponent}
+const routes: Routes = [
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent },
+    { path: 'recipes', component: RecipesComponent },
+    { path: 'recipes/:id', component: RecipeDetailsComponent },
+    { path: 'add-recipe', component: AddRecipeComponent },
+    { path: 'update-recipe/:id', component: AddRecipeComponent },
+    { path: 'favorite-recipe', component: FavoritesComponent },
+    { path: 'shopping-list', component: ShoppingListComponent }
 ]
 @NgModule({
-    imports:[RouterModule.forRoot(routes)],
-    exports:[RouterModule]
-    
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+
 })
 export class AppRoutingModule {
-   
+
 
 }   

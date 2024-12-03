@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Recipes } from '../models/recipe.model';
 import { BehaviorSubject, map, Observable } from 'rxjs';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn:'root'
 })
 export class RecipeService {
-
-
-
-  constructor() { }
 
   private recipeData: Recipes[] = [
     new Recipes(
@@ -73,10 +70,13 @@ export class RecipeService {
       false
     )
   ];
+  readonly recipeCategory = ['Italian', 'Mexican', 'Indian', 'Mediterranean'];
   private todoSubject = new BehaviorSubject<Recipes[]>(this.recipeData);
   recipe$: Observable<Recipes[]> = this.todoSubject.asObservable();
 
-   generateUUID() {
+
+  constructor(private shoppingListService: ShoppingListService) { }
+  generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (char) {
       const random = (Math.random() * 16) | 0;
       const value = char === 'x' ? random : (random & 0x3) | 0x8;
@@ -98,7 +98,7 @@ export class RecipeService {
       this.recipeData[index] = { ...this.recipeData[index], ...value };
       this.todoSubject.next(this.recipeData);
     }
-    
+
   }
 
   deleteRecipe(id: string) {
@@ -127,5 +127,13 @@ export class RecipeService {
     return this.recipe$.pipe(
       map((recipes) => recipes.find((recipe) => recipe.id === id))
     );
+  }
+
+  addIngredientsToShoppingList(ingredients: string[]) {
+    ingredients.forEach((ing:any)=>{
+      this.shoppingListService.onAddItem(ing);
+      console.log(ing);
+      
+    })
   }
 }

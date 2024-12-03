@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Recipes } from "../../models/recipe.model";
-import { RecipeService } from "../../services/recipe.service";
+import { RecipeService } from "../recipe.service";
 
 
 @Component({
@@ -26,6 +26,7 @@ import { RecipeService } from "../../services/recipe.service";
                 <li class="ml-4 inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2" *ngFor="let ingredient of recipe?.ingredients">> {{ingredient}}</li>
                
             </ul>
+            <button (click)="onAddToShoppingList()" class="bg-gray-200 font-bold py-1 px-4 rounded text-green-600 ">Add To Shopping List</button>
         </div>
         <div>
             <h3 class="text-xl font-medium space-y-2 mb-2">Description</h3>
@@ -50,7 +51,7 @@ export class RecipeDetailsComponent {
 
     recipe: Recipes | undefined
 
-    constructor(private route: ActivatedRoute, private recipeService: RecipeService,private router:Router) { }
+    constructor(private route: ActivatedRoute, private recipeService: RecipeService, private router: Router) { }
     ngOnInit(): void {
         this.route.params.subscribe((params) => {
             this.recipeService.getRecipeById(params['id']).subscribe((recipe) => {
@@ -70,5 +71,8 @@ export class RecipeDetailsComponent {
     }
     backToRecipeList() {
         throw new Error('Method not implemented.');
+    }
+    onAddToShoppingList() {
+        this.recipeService.addIngredientsToShoppingList(this.recipe?.ingredients || []);
     }
 }

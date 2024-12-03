@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { RecipeService } from "../../services/recipe.service";
+import { RecipeService } from "../recipe.service";
 import { Recipes } from "../../models/recipe.model";
 
 @Component({
     selector: 'app-favorites',
-    template:`
+    template: `
     <h1 class="text-3xl text-center text-gray-500">Favorite Recipes</h1>
     <div class="flex items-center justify-center h-[70vh]" *ngIf="!favorites.length">
         <div  class="text-xl bg-green-100 p-10 rounded-md">No favorite recipes yet</div>
@@ -15,13 +15,13 @@ import { Recipes } from "../../models/recipe.model";
 })
 export class FavoritesComponent implements OnInit {
 
-    favorites:Recipes[]=[]
+    favorites: Recipes[] = []
     constructor(private recipeService: RecipeService) { }
 
     ngOnInit(): void {
         this.recipeService.getRecipes().subscribe(
-            recipes=>{
-                this.favorites=recipes.filter(recipe=>recipe.isFavorite);
+            recipes => {
+                this.favorites = recipes.filter(recipe => recipe.isFavorite);
             }
         );
     }

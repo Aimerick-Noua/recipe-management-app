@@ -1,1 +1,38 @@
-<p>shopping-list works!</p>
+<div class="container mx-auto">
+
+    <div class="flex justify-between">
+        <div class="w-[75%]">
+            <input type="text" #addItem ngModel class="shadow-sm p-1  outline-none focus:ring-indigo-500 border focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+        </div>
+        <div>
+            <button (click)="onAddItem(addItem.value)" class="text-slate-900 font-bold py-1 px-4 rounded bg-green-400 ">Add Item</button>
+        </div>
+    </div>
+
+
+    <h2 class="text-2xl font-bold mb-4">Shopping List</h2>
+    <ul class="space-y-2">
+
+        <li *ngFor="let item of shoppingList" class="flex items-center">
+            <div class="flex justify-between w-full">
+                <div  class="w-80 ">
+                    <input type="checkbox" class="mr-2">
+                    <span>{{ item.name|capitalize }}</span>
+                </div>
+                <div class="flex justify-start w-10">
+                    <span class="w-8">{{item.price| currency:'USD'}}</span>
+                </div>
+                <div class="flex space-x-2 gap-6">
+                    <button class="text-white font-bold py-1 px-4 rounded bg-green-400 " (click)="onDecrementQuantity(item)">-</button>
+                    <span class="w-4 bg-red">{{item.quantity}}</span>
+                    <button class="text-white font-bold py-1 px-4 rounded bg-green-400 " (click)="onIncrementQuantity(item)">+</button>
+                </div>
+            </div>
+
+        </li>
+        <div class="flex justify-end pt-10 gap-4">
+            <span>Total: {{ total | currency:'USD'}}</span>
+            <button class="text-white font-bold py-1 px-4 rounded bg-green-400 ">Checkout</button>
+        </div>
+    </ul>
+</div>

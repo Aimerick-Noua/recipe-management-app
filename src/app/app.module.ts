@@ -14,6 +14,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddRecipeComponent } from './recipes/add-recipe/add-recipe.component';
 import { FavoritesComponent } from "./recipes/favorites/favorites.component";
 import { RecipeDetailsComponent } from "./recipes/recipe-details/recipe-details.component";
+import { FilterPipe } from "./pipes/filter.pipe";
+import { ShortenIngredientPipe } from "./pipes/shorten-ingredient.pipe";
+import { CapitalizePipe } from "./pipes/capitalize.pipe";
+import { ShoppingListService } from "./shopping-list/shopping-list.service";
+import { LoaderComponent } from "./utilities/loader.component";
 
 @NgModule({
     declarations: [
@@ -27,7 +32,11 @@ import { RecipeDetailsComponent } from "./recipes/recipe-details/recipe-details.
         SearchComponent,
         AddRecipeComponent,
         FavoritesComponent,
-        RecipeDetailsComponent
+        RecipeDetailsComponent,
+        FilterPipe,
+        ShortenIngredientPipe,
+        CapitalizePipe,
+        LoaderComponent
     ],
     imports: [
         BrowserModule,
@@ -36,7 +45,12 @@ import { RecipeDetailsComponent } from "./recipes/recipe-details/recipe-details.
         FormsModule,
         ReactiveFormsModule
     ],
-    bootstrap: [AppComponent]
+    providers:[ {
+        provide: ShoppingListService,
+        useFactory: () => new ShoppingListService(),
+        deps: [],
+      },],
+    bootstrap: [AppComponent],
 })
 export class AppModule {
 

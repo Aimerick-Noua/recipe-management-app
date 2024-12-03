@@ -1,4 +1,4 @@
-import { RecipeService } from './../../services/recipe.service';
+import { RecipeService } from '../recipe.service';
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Recipes } from '../../models/recipe.model';
 
