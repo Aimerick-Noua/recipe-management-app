@@ -34,7 +34,7 @@ export class RecipeService {
       'Classic Margherita Pizza',
       'Italian',
       'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg',
-      ['Pizza dough', 'Tomato sauce', 'Mozzarella cheese', 'Fresh basil', 'Olive oil'],
+      ['Pizza dough', 'Tomato sauce', 'Cheese', 'Fresh basil', 'Olive oil'],
       new Date('2024-11-12'),
       'A simple and iconic pizza with a crispy crust, fresh mozzarella, tomato sauce, and basil leaves.',
       false

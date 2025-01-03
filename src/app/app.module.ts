@@ -19,6 +19,9 @@ import { ShortenIngredientPipe } from "./pipes/shorten-ingredient.pipe";
 import { CapitalizePipe } from "./pipes/capitalize.pipe";
 import { ShoppingListService } from "./shopping-list/shopping-list.service";
 import { LoaderComponent } from "./utilities/loader.component";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { TranslationLoader } from "./translation/translation-loader";
 
 @NgModule({
     declarations: [
@@ -43,7 +46,15 @@ import { LoaderComponent } from "./utilities/loader.component";
         AppRoutingModule,
         RouterModule,
         FormsModule,
-        ReactiveFormsModule
+        HttpClientModule,
+        ReactiveFormsModule,
+        TranslateModule.forRoot({
+            loader:{
+                provide:TranslateLoader,
+                useFactory:(http:HttpClient)=> new TranslationLoader(http),
+                deps:[HttpClient]
+            }
+        })
     ],
     providers:[ {
         provide: ShoppingListService,

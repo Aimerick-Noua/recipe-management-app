@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -10,6 +11,8 @@ import { FormControl } from '@angular/forms';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
+
 
 // countries=[
 //   { id: 1, name: 'USA' },
@@ -46,7 +49,14 @@ pages=[1,2,3];
 posts:any[]=[];
 errorMessage!:string|null;
 isLoading=false;
-constructor(){
+constructor(private translateService:TranslateService){
+  this.translateService.setDefaultLang('fr');
+  this.translateService.use('fr');
+
+  // Listen to language change events
+  this.translateService.onLangChange.subscribe(() => {
+    console.log('Language changed!');
+  });
   this.pageControl.valueChanges.pipe(
     tap(()=>{
       this.isLoading=true;
@@ -74,5 +84,8 @@ constructor(){
 fetchPostPage(page:number){
   const fetchPost =  fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=6`).then(v=>v.json())
  return from(fetchPost);
+}
+languageSelected(lang:string){
+  this.translateService.use(lang)
 }
 }

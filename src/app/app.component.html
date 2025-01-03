@@ -1,14 +1,13 @@
 <div class="flex flex-col min-h-screen">
 
-  <div class=" max-w-full mx-32 ">
-    <app-header />
+  <div class=" max-w-full mx-12 ">
+    <app-header (useLang)="languageSelected($event)" />
     <div class="space-y-6">
       <router-outlet />
     </div>
   </div>
 </div>
 
-<h1 class="text-3xl font-bold text-center pt-4">Introduction to RXJS</h1>
 
 <!-- <div>
   <label for="countries">Country:</label>

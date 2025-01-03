@@ -17,19 +17,22 @@
     </div>
     <div>
       <nav class="hidden lg:flex lg:gap-x-12 nav-links w-full">
-        <a routerLink="/home" routerLinkActive="active" class="text-sm/6 font-semibold text-gray-900">Home</a>
-        <a routerLink="/recipes" routerLinkActive="active" class="text-sm/6 font-semibold text-gray-900">Recipes</a>
+        <a routerLink="/home" routerLinkActive="active" class="text-sm/6 font-semibold text-gray-900">{{'HOME' | translate}}</a>
+        <a routerLink="/recipes" routerLinkActive="active" class="text-sm/6 font-semibold text-gray-900">{{'RECIPES'| translate}}</a>
         <a routerLink="/favorite-recipe" routerLinkActive="active"
-          class="text-sm/6 font-semibold text-gray-900">favorites</a>
-        <a routerLink="/shopping-list" routerLinkActive="active" class="text-sm/6 font-semibold text-gray-900">Shopping
-          List</a>
-        <a routerLink="/add-recipe" routerLinkActive="active" class="text-sm/6 font-semibold text-gray-900">Add
-          recipe</a>
+          class="text-sm/6 font-semibold text-gray-900">{{'FAVORITES'| translate}}</a>
+        <a routerLink="/shopping-list" routerLinkActive="active" class="text-sm/6 font-semibold text-gray-900">{{'SHOPPING_LIST'| translate}}</a>
+        <a routerLink="/add-recipe" routerLinkActive="active" class="text-sm/6 font-semibold text-gray-900">{{'ADD_RECIPE'|translate}}</a>
       </nav>
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end space-x-4">
-      <a href="#" class="text-sm/6 font-semibold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
-      <a href="#" class="text-sm/6 font-semibold text-gray-900">Register <span aria-hidden="true">&rarr;</span></a>
+      <a href="#" class="text-sm/6 font-semibold text-gray-900">{{'LOGIN'|translate}} <span aria-hidden="true">&rarr;</span></a>
+      <a href="#" class="text-sm/6 font-semibold text-gray-900">{{'REGISTER'| translate}} <span aria-hidden="true">&rarr;</span></a>
+      <select (change)="switchLanguage($event)">
+        <option *ngFor="let lang of languages" [value]="lang.value">{{ lang.label }}</option>
+      </select>
+      
+      
     </div>
   </nav>
   <!-- Mobile Menu -->
@@ -41,11 +44,17 @@
       <a routerLink="/recipes" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Recipes</a>
       <a routerLink="/favorite-recipe" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Favorites</a>
       <a routerLink="/shopping-list" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Shopping List</a>
-      <a routerLink="/add-recipe" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Add
+      <a routerLink="/add-recipe" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">{{'ADD'| translate}}
         Recipe</a>
       <div class="space-y-2">
         <a href="#" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Log in</a>
         <a href="#" class="block text-base font-semibold text-gray-100" (click)="closeMobileMenu()">Register</a>
+        <select class="flex gap-4" >
+          <option value="fr">
+            FR
+          </option>
+          <option value="en">En</option>
+        </select>
       </div>
     </nav>
   </div>
